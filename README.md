@@ -38,10 +38,10 @@ q3 q4 & - <br>
 <br>
 <hr>
 The program takes that information and turns it into a dictionary, such as : {'q0': [('q1', 'a', 'A'), ('q2', 'b', 'BBB')], 'q1': [('q0', 'a', '-')], 'q2': [('q2', 'b', 'BBB'), ('q3', 'c', 'Pop')], 'q3': [('q3', 'd', 'Pop'), ('q3', 'c', 'Pop'), ('q4', '&', '-')]}
-<br>
+<br> <br>
 
 A key is a State that can go to another state, and it's corresponding elements are tuples where the first element represents the State that the 'key' goes to, and the 2nd element is the value of the move, and the third one represents the action taken upon the Stack.
-<br>
+<br> <br>
 At the start of the program you can choose the criteria through which the program decides if a word is accepted or not: <br>
 1 = By Empty Stack<br>
 2 = By Final State<br>
