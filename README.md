@@ -50,7 +50,7 @@ A key is a State that can go to another state, and it's corresponding elements a
  <img src="https://i.gyazo.com/1b69c8b2700e42f072f2c9016e16a638.png">
  </p>
 <br>
-<b> An accepted word is : aaaaaabbccccccddd
+<b> An accepted word is : aaaaaabbccccccddd </b>
 <br>
 In the theory of computation, a branch of theoretical computer science, a pushdown automaton (PDA) is a type of automaton that employs a stack. <br>
 <br>
