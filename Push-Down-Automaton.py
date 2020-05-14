@@ -1,5 +1,5 @@
 import copy
-f = open("Source.txt", 'r')
+f = open("Source2.txt", 'r')
 
 Checker = 0
 print("Criteria Choices: ")
@@ -10,28 +10,29 @@ print("3 = By Empty Stack & Final State")
 Criteria = input("The criteria is: ")
 
 def Validation(Word, Adjacency, CurrentState):
-
     NextState = ['0', '1']
     global Checker
-
+    print(CurrentState)
     if Word == '':
 
         if CurrentState[0] in Adjacency:
             for Arc in Adjacency[CurrentState[0]]:
                 if Arc[1] == '&':
                     if Arc[2] == 'Pop':
-                        NextState[0] = Arc[0]
-                        NextState[1] = NextState[1] = copy.deepcopy(CurrentState[1][:-1])
-                        Validation(Word, Adjacency, NextState)
+                        if CurrentState[1][-1] == Arc[3]:
+                            NextState[0] = Arc[0]
+                            NextState[1] = NextState[1] = copy.deepcopy(CurrentState[1][:-1])
+                            Validation(Word, Adjacency, NextState)
                     elif Arc[2] != 'Pop' and Arc[2] !='-':
-                        NextState[0] = Arc[0]
-                        NextState[1] = copy.deepcopy(CurrentState[1])
-                        if len(Arc[2]) > 1:
-                            for i in range(len(Arc[2])):
-                                NextState[1].append(Arc[2][i])
-                        else:
-                            NextState[1].append(Arc[2])
-                        Validation(Word, Adjacency, NextState)
+                        if CurrentState[1][-1] == Arc[3]:
+                            NextState[0] = Arc[0]
+                            NextState[1] = copy.deepcopy(CurrentState[1])
+                            if len(Arc[2]) > 1:
+                                for i in range(len(Arc[2])):
+                                    NextState[1].append(Arc[2][i])
+                            else:
+                                NextState[1].append(Arc[2])
+                            Validation(Word, Adjacency, NextState)
                     elif Arc[2] == '-':
                         NextState[0] = Arc[0]
                         NextState[1] = copy.deepcopy(CurrentState[1])
@@ -42,11 +43,11 @@ def Validation(Word, Adjacency, CurrentState):
                 Checker += 1000
 
         elif Criteria == '1':
-            if CurrentState[1] == ['Z0']:
+            if CurrentState[1] == []:
                 Checker += 1000
 
         elif Criteria == '3':
-            if CurrentState[0] in Final and CurrentState[1] == ['Z0']:
+            if CurrentState[0] in Final and CurrentState[1] == []:
                 Checker += 1000
 
     else:
@@ -54,36 +55,40 @@ def Validation(Word, Adjacency, CurrentState):
             for Arc in Adjacency[CurrentState[0]]:
                 if Word[0] == Arc[1]:
                     if Arc[2] == 'Pop':
-                        NextState[0] = Arc[0]
-                        NextState[1] = copy.deepcopy(CurrentState[1][:-1])
-                        Validation(Word[1:], Adjacency, NextState)
+                        if CurrentState[1][-1] == Arc[3]:
+                            NextState[0] = Arc[0]
+                            NextState[1] = copy.deepcopy(CurrentState[1][:-1])
+                            Validation(Word[1:], Adjacency, NextState)
                     elif Arc[2] != 'Pop' and Arc[2] !='-':
-                        NextState[0] = Arc[0]
-                        NextState[1] = copy.deepcopy(CurrentState[1])
-                        if len(Arc[2]) > 1:
-                            for i in range(len(Arc[2])):
-                                NextState[1].append(Arc[2][i])
-                        else:
-                            NextState[1].append(Arc[2])
-                        Validation(Word[1:], Adjacency, NextState)
+                        if CurrentState[1][-1] == Arc[3]:
+                            NextState[0] = Arc[0]
+                            NextState[1] = copy.deepcopy(CurrentState[1])
+                            if len(Arc[2]) > 1:
+                                for i in range(len(Arc[2])):
+                                    NextState[1].append(Arc[2][i])
+                            else:
+                                NextState[1].append(Arc[2])
+                            Validation(Word[1:], Adjacency, NextState)
                     elif Arc[2] == '-':
                         NextState[0] = Arc[0]
                         NextState[1] = copy.deepcopy(CurrentState[1])
                         Validation(Word[1:], Adjacency, NextState)
                 elif Word[0] == '&':
                     if Arc[2] == 'Pop':
-                        NextState[0] = Arc[0]
-                        NextState[1] = copy.deepcopy(CurrentState[1][:-1])
-                        Validation(Word, Adjacency, NextState)
+                        if CurrentState[1][-1] == Arc[3]:
+                            NextState[0] = Arc[0]
+                            NextState[1] = copy.deepcopy(CurrentState[1][:-1])
+                            Validation(Word, Adjacency, NextState)
                     elif Arc[2] != 'Pop' and Arc[2] !='-':
-                        NextState[0] = Arc[0]
-                        NextState[1] = copy.deepcopy(CurrentState[1])
-                        if len(Arc[2]) > 1:
-                            for i in range(len(Arc[2])):
-                                NextState[1].append(Arc[2][i])
-                        else:
-                            NextState[1].append(Arc[2])
-                        Validation(Word, Adjacency, NextState)
+                        if CurrentState[1][-1] == Arc[3]:
+                            NextState[0] = Arc[0]
+                            NextState[1] = copy.deepcopy(CurrentState[1])
+                            if len(Arc[2]) > 1:
+                                for i in range(len(Arc[2])):
+                                    NextState[1].append(Arc[2][i])
+                            else:
+                                NextState[1].append(Arc[2])
+                            Validation(Word, Adjacency, NextState)
                     elif Arc[2] == '-':
                         NextState[0] = Arc[0]
                         NextState[1] = copy.deepcopy(CurrentState[1])
@@ -99,10 +104,10 @@ Adjacency = {}
 
 while L:
     if L[0] not in Adjacency.keys():
-        Adjacency[L[0]] = [(L[1], L[2], L[3])]
+        Adjacency[L[0]] = [(L[1], L[2], L[3], L[4])]
 
     else:
-        Adjacency[L[0]].append((L[1], L[2], L[3]))
+        Adjacency[L[0]].append((L[1], L[2], L[3], L[4]))
     L = f.readline().split()
 
 print("The PDA Form is: ")
