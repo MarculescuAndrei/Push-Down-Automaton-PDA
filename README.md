@@ -1,4 +1,4 @@
-# Push-Down-Automaton-PDA // TO BE UPDATED
+# Push-Down-Automaton-PDA 
 A working Push-Down-Automaton in Python 3 - (Automata Theory)
 <br>
 <hr>
@@ -27,20 +27,21 @@ Other Lines : X Y W Z | Where the State X goes to State Y when the value W is re
 
 q0 <br>
 q4 <br>
-q0 q1 a A <br>
-q1 q0 a - <br>
-q0 q2 b BBB <br>
-q2 q2 b BBB <br>
-q2 q3 c Pop <br>
-q3 q3 d Pop <br>
-q3 q3 c Pop <br>
-q3 q4 & - <br>
+q0 q1 a A Z0<br>
+q0 q1 a A A<br>
+q1 q0 a - A<br>
+q0 q2 b BBB A<br>
+q2 q2 b BBB B<br>
+q2 q3 c Pop B<br>
+q3 q3 d Pop A<br>
+q3 q3 c Pop B<br>
+q3 q4 & - Z0 <br>
 <br>
 <hr>
 The program takes that information and turns it into a dictionary, such as : {'q0': [('q1', 'a', 'A'), ('q2', 'b', 'BBB')], 'q1': [('q0', 'a', '-')], 'q2': [('q2', 'b', 'BBB'), ('q3', 'c', 'Pop')], 'q3': [('q3', 'd', 'Pop'), ('q3', 'c', 'Pop'), ('q4', '&', '-')]}
 <br> <br>
 
-A key is a State that can go to another state, and it's corresponding elements are tuples where the first element represents the State that the 'key' goes to, and the 2nd element is the value of the move, and the third one represents the action taken upon the Stack.
+A key is a State that can go to another state, and it's corresponding elements are tuples where the first element represents the State that the 'key' goes to, and the 2nd element is the value of the move, and the third one represents the action taken upon the Stack, and lastly the fourth one represents the element that has to be at the top of the stack in order for the action to take place.
 <br> <br>
 At the start of the program you can choose the criteria through which the program decides if a word is accepted or not: <br>
 1 = By Empty Stack<br>
@@ -57,7 +58,7 @@ At the start of the program you can choose the criteria through which the progra
  <img src="https://i.gyazo.com/1b69c8b2700e42f072f2c9016e16a638.png">
  </p>
 <br>
-<b> An accepted word is : aaaaaabbccccccddd </b>
+
 <br>
 <hr>
 <br>
