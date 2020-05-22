@@ -38,7 +38,7 @@ q3 q3 c Pop B<br>
 q3 q4 & - Z0 <br>
 <br>
 <hr>
-The program takes that information and turns it into a dictionary, such as : {'q0': [('q1', 'a', 'A'), ('q2', 'b', 'BBB')], 'q1': [('q0', 'a', '-')], 'q2': [('q2', 'b', 'BBB'), ('q3', 'c', 'Pop')], 'q3': [('q3', 'd', 'Pop'), ('q3', 'c', 'Pop'), ('q4', '&', '-')]}
+The program takes that information and turns it into a dictionary, such as : {'q0': [('q1', 'a', 'A', 'Z0'), ('q1', 'a', 'A', 'A'), ('q2', 'b', 'BBB', 'A')], 'q1': [('q0', 'a', '-', 'A')], 'q2': [('q2', 'b', 'BBB', 'B'), ('q3', 'c', 'Pop', 'B')], 'q3': [('q3', 'd', 'Pop', 'A'), ('q3', 'c', 'Pop', 'B'), ('q4', '&', '-', 'Z0')]}
 <br> <br>
 
 A key is a State that can go to another state, and it's corresponding elements are tuples where the first element represents the State that the 'key' goes to, and the 2nd element is the value of the move, and the third one represents the action taken upon the Stack, and lastly the fourth one represents the element that has to be at the top of the stack in order for the action to take place.
